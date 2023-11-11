@@ -82,32 +82,38 @@ while(not Converging and (len(iterations) < 1000)):
   
   pTable = deepcopy(tempTable)
 
-#Creating the label array
-labelArr = []
-for i in range(0,numX):
-  temp = "x" + str(i)
-  labelArr.append(temp)
-labelArr.append("b")
-for i in range(0,numX):
-  temp = "w" + str(i)
-  labelArr.append(temp)
-labelArr.append("wb")
-labelArr.append("a")
-labelArr.append("y")
-labelArr.append("z")
+if(len(iterations) >= 1000):
+  fp = open("output.txt", "w")
+  fp.write("not converging")
+  fp.close()
 
-for itr in iterations:
-  itr.insert(0,labelArr)
+else:
+  #Creating the label array
+  labelArr = []
+  for i in range(0,numX):
+    temp = "x" + str(i)
+    labelArr.append(temp)
+  labelArr.append("b")
+  for i in range(0,numX):
+    temp = "w" + str(i)
+    labelArr.append(temp)
+  labelArr.append("wb")
+  labelArr.append("a")
+  labelArr.append("y")
+  labelArr.append("z")
 
-#Write iterations to output.txt
-fp = open("output.txt", "w")
-for itr in iterations:
-  temp = "Iteration " + str(iterations.index(itr) + 1) + ":\n"
-  fp.write(temp)
-  for row in itr:
-    for val in row:
-      temp = 13 * " " + str(val) + " " * (4 - (len(str(val))))
-      fp.write(temp)
+  for itr in iterations:
+    itr.insert(0,labelArr)
+
+  #Write iterations to output.txt
+  fp = open("output.txt", "w")
+  for itr in iterations:
+    temp = "Iteration " + str(iterations.index(itr) + 1) + ":\n"
+    fp.write(temp)
+    for row in itr:
+      for val in row:
+        temp = 13 * " " + str(val) + " " * (4 - (len(str(val))))
+        fp.write(temp)
+      fp.write("\n")
     fp.write("\n")
-  fp.write("\n")
-fp.close()
+  fp.close()
