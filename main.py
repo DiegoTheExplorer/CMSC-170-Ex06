@@ -111,8 +111,10 @@ else:
     temp = "Iteration " + str(iterations.index(itr) + 1) + ":\n"
     fp.write(temp)
     for row in itr:
+      if(itr.index(row) == (len(itr) - 1)):
+        break
       for val in row:
-        temp = 13 * " " + str(val) + " " * (4 - (len(str(val))))
+        temp = 13 * " " + str(val) + (" " * (4 - (len(str(val)))))
         fp.write(temp)
       fp.write("\n")
     fp.write("\n")
