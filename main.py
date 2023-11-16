@@ -113,8 +113,10 @@ else:
     for row in itr:
       if(itr.index(row) == (len(itr) - 1)):
         break
+      temp = (10 * " ")
+      fp.write(temp)
       for val in row:
-        temp = 13 * " " + str(val) + (" " * (4 - (len(str(val)))))
+        temp = str(val) + (" " * (8 - (len(str(val)))))
         fp.write(temp)
       fp.write("\n")
     fp.write("\n")
